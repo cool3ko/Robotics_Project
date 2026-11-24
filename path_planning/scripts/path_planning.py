@@ -4,6 +4,7 @@ import rospy
 from pp_msgs.srv import PathPlanningPlugin, PathPlanningPluginResponse
 from geometry_msgs.msg import Twist
 from gridviz import GridViz
+from algorithms.a_star import a_star
 
 def make_plan(req):
   ''' 
@@ -20,7 +21,7 @@ def make_plan(req):
   # side of each grid map square in meters
   resolution = 0.05
   # origin of grid map
-  origin = [] #hint: find this in your YAML map file
+  origin = [-10.0, -10.0] #hint: find this in your YAML map file
 
   grid_visualisation = GridViz(costmap, resolution, origin, start, goal, width)
 
@@ -29,17 +30,17 @@ def make_plan(req):
 
   # calculate the shortest path
 
-  """
-  Your code continues here.
+
+
   path = a_star(start, goal, width, height, costmap, resolution, origin, grid_visualisation)
 
-  """
 
   if not path:
     rospy.logwarn("No path returned by the path algorithm")
     path = []
   else:
-    # additional code here as per your implementation, e.g., computing/displaying your performance metrics
+    comp_time = (rospy.Time.now() - start_time).to_sec()
+    rospy.loginfo("Computational time: %.4f s", comp_time)
     rospy.loginfo('Path sent to navigation stack')
 
   resp = PathPlanningPluginResponse()
