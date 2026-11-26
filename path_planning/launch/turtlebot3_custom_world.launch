@@ -36,6 +36,7 @@
   <!-- Add AMCL here, so you can estimate the robot's path on first launch. -->
   <node pkg="amcl" type="amcl" name="amcl" output="screen">
     <param name="use_map_topic" value="true"/>
+    <param name="transform_tolerance" value="0.5"/>
   </node>
 
   <!-- Start service server that responds with a plan for global path planning -->
