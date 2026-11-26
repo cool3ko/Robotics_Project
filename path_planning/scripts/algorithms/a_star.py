@@ -1,7 +1,7 @@
 import rospy
 import heapq
 
-from algorithms.neighbors import neighbors
+from algorithms.neighbors import find_neighbors
 
 
 EPSILON = 1.0      
@@ -75,7 +75,7 @@ def a_star(start, goal, width, height, costmap, resolution, origin, grid_visuali
         grid_visualisation.set_color(current, "pale yellow")
 
 
-        for n, _ in neighbors(current, width, height, costmap):
+        for n, _ in find_neighbors(current, width, height, costmap, MOVE_COST):
 
             if n in closed_set:
                 continue
