@@ -37,6 +37,9 @@
   <node pkg="amcl" type="amcl" name="amcl" output="screen">
     <param name="use_map_topic" value="true"/>
     <param name="transform_tolerance" value="0.5"/>
+    <param name="initial_pose_x" value="-3.35"/>
+    <param name="initial_pose_y" value="-1.4"/>
+    <param name="initial_pose_a" value="0.0"/>
   </node>
 
   <!-- Start service server that responds with a plan for global path planning -->
