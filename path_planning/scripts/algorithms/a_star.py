@@ -55,6 +55,10 @@ def a_star(start, goal, width, height, costmap, resolution, origin, grid_visuali
 
         if current in closed_set:
             continue
+        
+           
+        examined += 1
+
 
 
         if current == goal:
@@ -64,14 +68,13 @@ def a_star(start, goal, width, height, costmap, resolution, origin, grid_visuali
             expanded = examined - path_size
             rospy.loginfo("Path size: %d", path_size)
             rospy.loginfo("Examined nodes: %d", examined)
-            rospy.loginfo("Examined nodes: %d", expanded)
+            rospy.loginfo("Expanded nodes: %d", expanded)
 
             return path
 
 
         closed_set.add(current)
-        examined += 1
-
+        
         grid_visualisation.set_color(current, "pale yellow")
 
 
