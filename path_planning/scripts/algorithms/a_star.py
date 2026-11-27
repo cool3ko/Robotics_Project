@@ -4,7 +4,7 @@ import heapq
 from algorithms.neighbors import find_neighbors
 
 
-EPSILON = 1.0      
+EPSILON = 1.5
 MOVE_COST = 1      
 
 
